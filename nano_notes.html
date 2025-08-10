@@ -1,0 +1,33 @@
+<!--
+Git Branch Merge Knowledge Recap
+
+1. Why no conflict sometimes:
+   - Git compares changes from the common ancestor (base commit).
+   - If a line is changed in one branch but untouched in the other, Git merges automatically (no conflict).
+   - Example:
+     Base: button
+     feature1: dropdown
+     main: button (unchanged)
+     → Git sees only one branch changed it, so it replaces without asking.
+
+2. Why conflict sometimes:
+   - If the SAME line is changed differently in BOTH branches since the common ancestor, Git flags a conflict.
+   - Example:
+     Base: button
+     feature1: dropdown
+     main: slider
+     → Both branches changed the same line → conflict.
+
+3. "Merging into main vs merging into feature" difference:
+   - Git's conflict detection is symmetric; the difference is just which branch pointer moves after merge.
+   - Perception of "main code disappearing" happens if Git does a fast-forward merge (main just jumps ahead to feature’s commit history).
+
+4. Fast-forward vs true merge:
+   - Fast-forward: No new merge commit, branch pointer just moves forward (happens if main has no new commits).
+   - True merge: Creates a new commit combining histories.
+
+5. Comments & branches:
+   - Adding comments changes the branch because file content changes.
+   - Conflicts occur if both branches modify the SAME chunk of a file (comments or code).
+   - If in different parts of the file → auto merge; if in same spot → conflict.
+-->
